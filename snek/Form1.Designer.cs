@@ -1,6 +1,6 @@
 ﻿namespace snek
 {
-    partial class Form1
+    partial class Snek
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            components = new System.ComponentModel.Container();
+            Screen = new PictureBox();
+            tick = new System.Windows.Forms.Timer(components);
+            ((System.ComponentModel.ISupportInitialize)Screen).BeginInit();
+            SuspendLayout();
+            // 
+            // Screen
+            // 
+            Screen.BackColor = SystemColors.ActiveCaptionText;
+            Screen.Dock = DockStyle.Fill;
+            Screen.Location = new Point(0, 0);
+            Screen.Name = "Screen";
+            Screen.Size = new Size(804, 801);
+            Screen.TabIndex = 0;
+            Screen.TabStop = false;
+            // 
+            // tick
+            // 
+            tick.Enabled = true;
+            tick.Interval = 16;
+            tick.Tick += tick_Tick;
+            // 
+            // Snek
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(804, 801);
+            Controls.Add(Screen);
+            Name = "Snek";
+            Text = "Snek";
+            Load += Snek_Load;
+            ((System.ComponentModel.ISupportInitialize)Screen).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private PictureBox Screen;
+        private System.Windows.Forms.Timer tick;
     }
 }
