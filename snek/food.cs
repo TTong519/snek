@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace snek
 {
-    internal class Game
+    internal class food
     {
-        Grid grid;
-        Snake snek;
-        food food;
-
+        Point position;
+        public food(Point pos)
+        {
+            position = pos;
+        }
     }
 }
