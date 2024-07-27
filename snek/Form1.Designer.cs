@@ -59,6 +59,8 @@
             Name = "Snek";
             Text = "Snek";
             Load += Snek_Load;
+            KeyDown += Snek_KeyDown;
+            PreviewKeyDown += Snek_PreviewKeyDown;
             ((System.ComponentModel.ISupportInitialize)Screen).EndInit();
             ResumeLayout(false);
         }

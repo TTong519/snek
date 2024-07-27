@@ -10,33 +10,32 @@ namespace snek
     {
         Point prevTail;
         Point[] body;
-        Brush[,] draw;
-        public Snake(Point hlok, Point tlok)
+        int size;
+        public Snake()
         {
-            for(int i = 0; i < 8;  i++)
+            body[0] = new Point(4, 4);
+        }
+        public void Update(moveState st)
+        {
+            if(st == moveState.Up)
             {
-                for(int j = 0; j < 8; j++)
-                {
-                    if(hlok.X == i && hlok.Y == j)
-                    {
-                        draw[i, j] = Brushes.Black;
-                    }
-                    if(tlok.X == i && tlok.Y == j)
-                    {
-                        draw[i, j] = Brushes.Black;
-                    }
-                }
+                body[0] = new Point(body[0].X, body[0].Y+1);
+            }
+            else if(st == moveState.Down) 
+            {
+                body[0] = new Point(body[0].X, body[0].Y - 1);
+            }
+            else if(st == moveState.Left) 
+            {
+                body[0] = new Point(body[0].X - 1, body[0].Y);
+            }
+            else
+            {
+                body[0] = new Point(body[0].X + 1, body[0].Y);
             }
         }
-        public void update()
+        public void Add()
         {
-
-        }
-        public void add()
-        {
-            Point temp = tail;
-            tail = prevTail;
-            prevTail = temp;
         }
     }
 }
