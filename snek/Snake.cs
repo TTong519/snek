@@ -38,7 +38,7 @@ namespace snek
             {
                 if (body[i] != null)
                 {
-
+                    body1[i] = body[i - 1];
                 }
             }
         }
