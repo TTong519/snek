@@ -9,7 +9,7 @@ namespace snek
     public class Snake
     {
         Point prevTail;
-        Point[] body;
+        public Point[] body = new Point[1];
         int size;
         public Snake()
         {
@@ -19,19 +19,19 @@ namespace snek
         {
             if(st == moveState.Up)
             {
-                body[0] = new Point(body[0].X, body[0].Y+1);
+                body[0] = new Point(body[0].X + 1, body[0].Y);
             }
             else if(st == moveState.Down) 
             {
-                body[0] = new Point(body[0].X, body[0].Y - 1);
+                body[0] = new Point(body[0].X - 1, body[0].Y);
             }
             else if(st == moveState.Left) 
             {
-                body[0] = new Point(body[0].X - 1, body[0].Y);
+                body[0] = new Point(body[0].X, body[0].Y - 1);
             }
             else
             {
-                body[0] = new Point(body[0].X + 1, body[0].Y);
+                body[0] = new Point(body[0].X, body[0].Y + 1);
             }
         }
         public void Add()

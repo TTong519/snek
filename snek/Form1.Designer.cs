@@ -47,7 +47,7 @@
             // tick
             // 
             tick.Enabled = true;
-            tick.Interval = 16;
+            tick.Interval = 500;
             tick.Tick += tick_Tick;
             // 
             // Snek

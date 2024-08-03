@@ -10,8 +10,11 @@ namespace snek
         Bitmap bmp;
         Grid grid;
         Game game;
+        Bitmap birb;
         private void Snek_Load(object sender, EventArgs e)
         {
+            birb = Properties.Resources.Hen;
+
             bmp = new Bitmap(Screen.Width, Screen.Height);
             gfx = Graphics.FromImage(bmp);
             grid = new Grid();
@@ -29,25 +32,26 @@ namespace snek
                 }
             }
             snek.Update(player.states);
+            gfx.DrawImage(birb, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
             Screen.Image = bmp;
         }
         private void Snek_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {
-                game.player.states = moveState.Left;
+                player.states = moveState.Left;
             }
             else if (e.KeyCode == Keys.Right)
             {
-                game.player.states = moveState.Right;
+                player.states = moveState.Right;
             }
             if (e.KeyCode == Keys.Down)
             {
-                game.player.states = moveState.Up;
+                player.states = moveState.Up;
             }
             else if (e.KeyCode == Keys.Up)
             {
-                game.player.states = moveState.Down;
+                player.states = moveState.Down;
             }
         }
         private void Snek_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
