@@ -11,9 +11,9 @@ namespace snek
         Grid grid;
         Snake snek;
         food food;
-        public game()
-        {
+        //public game()
+        //{
 
-        }
+        //}
     }
 }

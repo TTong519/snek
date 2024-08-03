@@ -10,10 +10,10 @@ namespace snek
         Bitmap bmp;
         Grid grid;
         Game game;
-        Bitmap birb;
+        Bitmap hen;
         private void Snek_Load(object sender, EventArgs e)
         {
-            birb = Properties.Resources.Hen;
+            hen = Properties.Resources.Hen;
 
             bmp = new Bitmap(Screen.Width, Screen.Height);
             gfx = Graphics.FromImage(bmp);
@@ -32,7 +32,7 @@ namespace snek
                 }
             }
             snek.Update(player.states);
-            gfx.DrawImage(birb, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
+            gfx.DrawImage(hen, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
             Screen.Image = bmp;
         }
         private void Snek_KeyDown(object sender, KeyEventArgs e)
