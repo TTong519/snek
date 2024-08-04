@@ -11,10 +11,11 @@ namespace snek
         Grid grid;
         Game game;
         Bitmap hen;
+        Bitmap chick1;
         private void Snek_Load(object sender, EventArgs e)
         {
             hen = Properties.Resources.Hen;
-
+            chick1 = Properties.Resources.swan;
             bmp = new Bitmap(Screen.Width, Screen.Height);
             gfx = Graphics.FromImage(bmp);
             grid = new Grid();
@@ -33,6 +34,8 @@ namespace snek
             }
             snek.Update(player.states);
             gfx.DrawImage(hen, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
+            gfx.DrawImage(chick1, grid.Squares[snek.body[1].X, snek.body[1].Y].Hitbox);
+            gfx.DrawImage(chick1, grid.Squares[snek.body[2].X, snek.body[2].Y].Hitbox);
             Screen.Image = bmp;
         }
         private void Snek_KeyDown(object sender, KeyEventArgs e)

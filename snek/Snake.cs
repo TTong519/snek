@@ -41,9 +41,11 @@ namespace snek
                     body1[i] = body[i - 1];
                 }
             }
+            body = body1;
         }
         public void Add()
         {
+            
         }
     }
 }
