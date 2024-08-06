@@ -52,7 +52,7 @@ namespace snek
         {
             for (int i = 1; i < 10; i++)
             {
-                if (body[i] != null)
+                if (body[i] == null)
                 {
                     body[i] = last;
                 }
