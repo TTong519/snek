@@ -11,9 +11,13 @@ namespace snek
         Point prevTail;
         public Point[] body = new Point[10];
         int size;
+        public Point last;
+        public Point[] lastbody = new Point[10];
         public Snake()
         {
             body[0] = new Point(4, 4);
+            body[1] = new Point(4, 5);
+            last = new Point(4, 5);
         }
         public void Update(moveState st)
         {
@@ -41,11 +45,18 @@ namespace snek
                     body1[i] = body[i - 1];
                 }
             }
+            lastbody = body;
             body = body1;
         }
         public void Add()
         {
-            
+            for (int i = 1; i < 10; i++)
+            {
+                if (body[i] != null)
+                {
+                    body[i] = last;
+                }
+            }
         }
     }
 }

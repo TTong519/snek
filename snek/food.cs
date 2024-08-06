@@ -8,10 +8,20 @@ namespace snek
 {
     internal class food
     {
-        Point position;
-        public food(Point pos)
+        Random random = new Random();
+        public Point position;
+        public food()
         {
-            position = pos;
+            position = new Point(random.Next(8), random.Next(8));
+        }
+        public bool isifeaten(Point head) 
+        {
+            if (position == head)
+            {
+                position = new Point(random.Next(8), random.Next(8));
+                return true;
+            }
+            return false;
         }
     }
 }

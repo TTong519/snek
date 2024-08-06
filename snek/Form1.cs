@@ -12,16 +12,21 @@ namespace snek
         Game game;
         Bitmap hen;
         Bitmap chick1;
+        Bitmap chick2;
+        Bitmap snaek;
         private void Snek_Load(object sender, EventArgs e)
         {
             hen = Properties.Resources.Hen;
-            chick1 = Properties.Resources.swan;
+            chick1 = Properties.Resources.Chick;
+            chick2 = Properties.Resources.swan;
+            snaek = Properties.Resources.Snek1;
             bmp = new Bitmap(Screen.Width, Screen.Height);
             gfx = Graphics.FromImage(bmp);
             grid = new Grid();
         }
         Snake snek = new Snake();
         Player player = new Player();
+        food food = new food();
         private void tick_Tick(object sender, EventArgs e)
         {
             gfx.Clear(BackColor);
@@ -35,7 +40,12 @@ namespace snek
             snek.Update(player.states);
             gfx.DrawImage(hen, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
             gfx.DrawImage(chick1, grid.Squares[snek.body[1].X, snek.body[1].Y].Hitbox);
-            gfx.DrawImage(chick1, grid.Squares[snek.body[2].X, snek.body[2].Y].Hitbox);
+            gfx.DrawImage(chick2, grid.Squares[snek.body[2].X, snek.body[2].Y].Hitbox);
+            if (food.isifeaten(snek.body[0]))
+            {
+                snek.Add();
+            }
+            gfx.DrawImage(snaek, grid.Squares[food.position.X, food.position.Y].Hitbox);
             Screen.Image = bmp;
         }
         private void Snek_KeyDown(object sender, KeyEventArgs e)

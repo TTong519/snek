@@ -38,6 +38,7 @@
             // 
             Screen.BackColor = SystemColors.ActiveCaptionText;
             Screen.Dock = DockStyle.Fill;
+            Screen.ErrorImage = null;
             Screen.Location = new Point(0, 0);
             Screen.Name = "Screen";
             Screen.Size = new Size(804, 801);
