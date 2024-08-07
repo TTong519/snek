@@ -39,8 +39,14 @@ namespace snek
             }
             snek.Update(player.states);
             gfx.DrawImage(hen, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
-            gfx.DrawImage(chick1, grid.Squares[snek.body[1].X, snek.body[1].Y].Hitbox);
-            gfx.DrawImage(chick2, grid.Squares[snek.body[2].X, snek.body[2].Y].Hitbox);
+            for(int i = 1;i < 10;i++)
+            {
+                if (snek.body[i].X == 100000)
+                {
+                    continue;
+                }
+                gfx.DrawImage(chick1, grid.Squares[snek.body[i].X, snek.body[i].Y].Hitbox);
+            }
             if (food.isifeaten(snek.body[0]))
             {
                 snek.Add();
