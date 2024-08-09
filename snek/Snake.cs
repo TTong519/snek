@@ -59,7 +59,7 @@ namespace snek
             {
                 if (body[i] == null)
                 {
-                    body[i] = last;
+                    
                 }
             }
         }
