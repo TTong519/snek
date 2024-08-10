@@ -45,9 +45,13 @@ namespace snek
             }
             for(int i = 1; i < 10; i++)
             {
-                if (body[i] != null)
+                if (body[i].X != 100000)
                 {
                     body1[i] = body[i - 1];
+                }
+                else
+                {
+                    body1[i] = new Point(100000, 100000);
                 }
             }
             lastbody = body;
@@ -57,9 +61,9 @@ namespace snek
         {
             for (int i = 1; i < 10; i++)
             {
-                if (body[i] == null)
+                if (body[i].X == 100000)
                 {
-                    
+                    body[i] = lastbody[i-1];
                 }
             }
         }
