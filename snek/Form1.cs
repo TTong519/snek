@@ -39,7 +39,7 @@ namespace snek
             }
             snek.Update(player.states);
             gfx.DrawImage(hen, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
-            for(int i = 1;i < 10;i++)
+            for(int i = 1;i < 63;i++)
             {
                 if (snek.body[i].X == 100000)
                 {
