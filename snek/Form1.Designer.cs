@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             Screen = new PictureBox();
             tick = new System.Windows.Forms.Timer(components);
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)Screen).BeginInit();
             SuspendLayout();
             // 
@@ -44,12 +46,33 @@
             Screen.Size = new Size(804, 801);
             Screen.TabIndex = 0;
             Screen.TabStop = false;
+            Screen.Click += Screen_Click;
             // 
             // tick
             // 
             tick.Enabled = true;
-            tick.Interval = 500;
+            tick.Interval = 200;
             tick.Tick += tick_Tick;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(339, 242);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
+            label1.Click += label1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(339, 257);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 2;
+            label2.Text = "label2";
+            label2.Click += label2_Click;
             // 
             // Snek
             // 
@@ -57,6 +80,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(804, 801);
             Controls.Add(Screen);
+            Controls.Add(label1);
+            Controls.Add(label2);
             Name = "Snek";
             Text = "Snek";
             Load += Snek_Load;
@@ -64,11 +89,14 @@
             PreviewKeyDown += Snek_PreviewKeyDown;
             ((System.ComponentModel.ISupportInitialize)Screen).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private PictureBox Screen;
         private System.Windows.Forms.Timer tick;
+        private Label label1;
+        private Label label2;
     }
 }

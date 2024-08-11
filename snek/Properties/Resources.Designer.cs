@@ -73,9 +73,29 @@ namespace snek.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HakopGrape {
+            get {
+                object obj = ResourceManager.GetObject("HakopGrape", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hen {
             get {
                 object obj = ResourceManager.GetObject("Hen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NikitaCube {
+            get {
+                object obj = ResourceManager.GetObject("NikitaCube", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

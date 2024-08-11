@@ -14,11 +14,16 @@ namespace snek
         {
             position = new Point(random.Next(8), random.Next(8));
         }
-        public bool isifeaten(Point head) 
+        public bool isifeaten(Point[] body) 
         {
-            if (position == head)
+            if (position == body[0])
             {
-                position = new Point(random.Next(8), random.Next(8));
+                Point newpos = new Point(random.Next(8), random.Next(8));
+                while(body.Contains(newpos))
+                {
+                    newpos = new Point(random.Next(8), random.Next(8));
+                }
+                position = newpos;
                 return true;
             }
             return false;

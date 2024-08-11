@@ -17,7 +17,7 @@ namespace snek
         {
             body[0] = new Point(4, 4);
             body[1] = new Point(4, 5);
-            for (int i = 2; i < 10; i++)
+            for (int i = 2; i < 63; i++)
             {
                 body[i] = new Point(100000, 100000);
             }

@@ -14,12 +14,14 @@ namespace snek
         Bitmap chick1;
         Bitmap chick2;
         Bitmap snaek;
+        Bitmap grape;
         private void Snek_Load(object sender, EventArgs e)
         {
             hen = Properties.Resources.Hen;
             chick1 = Properties.Resources.Chick;
             chick2 = Properties.Resources.swan;
             snaek = Properties.Resources.Snek1;
+            grape = Properties.Resources.HakopGrape;
             bmp = new Bitmap(Screen.Width, Screen.Height);
             gfx = Graphics.FromImage(bmp);
             grid = new Grid();
@@ -38,8 +40,29 @@ namespace snek
                 }
             }
             snek.Update(player.states);
+            if ((snek.body[0].X >= 8 || snek.body[0].X < 0) || (snek.body[0].Y >= 8 || snek.body[0].Y < 0))
+            {
+                tick.Enabled = false;
+                label1.BringToFront();
+                label1.Text = "Game Over";
+                label2.BringToFront();
+                label2.Text = "Play Again?";
+                return;
+            }
+            for (int i = 1; i < 63; i++)
+            {
+                if (snek.body[0] == snek.body[i])
+                {
+                    tick.Enabled = false;
+                    label1.BringToFront();
+                    label1.Text = "Game Over";
+                    label2.BringToFront();
+                    label2.Text = "Play Again?";
+                    return;
+                }
+            }
             gfx.DrawImage(hen, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
-            for(int i = 1;i < 63;i++)
+            for (int i = 1; i < 63; i++)
             {
                 if (snek.body[i].X == 100000)
                 {
@@ -47,11 +70,11 @@ namespace snek
                 }
                 gfx.DrawImage(chick1, grid.Squares[snek.body[i].X, snek.body[i].Y].Hitbox);
             }
-            if (food.isifeaten(snek.body[0]))
+            if (food.isifeaten(snek.body))
             {
                 snek.Add();
             }
-            gfx.DrawImage(snaek, grid.Squares[food.position.X, food.position.Y].Hitbox);
+            gfx.DrawImage(grape, grid.Squares[food.position.X, food.position.Y].Hitbox);
             Screen.Image = bmp;
         }
         private void Snek_KeyDown(object sender, KeyEventArgs e)
@@ -76,6 +99,29 @@ namespace snek
         private void Snek_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
 
+        }
+
+        private void Screen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            bmp = new Bitmap(Screen.Width, Screen.Height);
+            gfx = Graphics.FromImage(bmp);
+            grid = new Grid();
+            snek = new Snake();
+            player = new Player();
+            food = new food();
+            tick.Enabled = true;
+            label1.SendToBack();
+            label2.SendToBack();
         }
     }
 }
