@@ -1,3 +1,5 @@
+using System.Drawing.Drawing2D;
+
 namespace snek
 {
     public partial class Snek : Form
@@ -15,6 +17,7 @@ namespace snek
         Bitmap chick2;
         Bitmap snaek;
         Bitmap grape;
+        bool warp;
         private void Snek_Load(object sender, EventArgs e)
         {
             hen = Properties.Resources.Hen;
@@ -40,7 +43,7 @@ namespace snek
                 }
             }
             snek.Update(player.states);
-            if ((snek.body[0].X >= 8 || snek.body[0].X < 0) || (snek.body[0].Y >= 8 || snek.body[0].Y < 0))
+            if (((snek.body[0].X >= 8 || snek.body[0].X < 0) || (snek.body[0].Y >= 8 || snek.body[0].Y < 0)) && !warp)
             {
                 tick.Enabled = false;
                 label1.BringToFront();
@@ -48,6 +51,16 @@ namespace snek
                 label2.BringToFront();
                 label2.Text = "Play Again?";
                 return;
+            }
+            else if(warp)
+            {
+                for(int i = 0; i < 63; i++)
+                {
+                    if(((snek.body[i].X >= 8 || snek.body[i].X < 0) || (snek.body[i].Y >= 8 || snek.body[i].Y < 0)))
+                    {
+
+                    }
+                }
             }
             for (int i = 1; i < 63; i++)
             {
@@ -94,6 +107,10 @@ namespace snek
             else if (e.KeyCode == Keys.Up)
             {
                 player.states = moveState.Down;
+            }
+            if(e.KeyCode == Keys.W)
+            {
+                warp = !warp;
             }
         }
         private void Snek_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
