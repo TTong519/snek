@@ -39,10 +39,11 @@
             // Screen
             // 
             Screen.BackColor = SystemColors.ActiveCaptionText;
+            Screen.Dock = DockStyle.Fill;
             Screen.ErrorImage = null;
             Screen.Location = new Point(0, 0);
             Screen.Name = "Screen";
-            Screen.Size = new Size(400, 400);
+            Screen.Size = new Size(524, 481);
             Screen.TabIndex = 0;
             Screen.TabStop = false;
             Screen.Click += Screen_Click;
@@ -50,7 +51,7 @@
             // tick
             // 
             tick.Enabled = true;
-            tick.Interval = 200;
+            tick.Interval = 400;
             tick.Tick += tick_Tick;
             // 
             // label1

@@ -18,8 +18,9 @@ namespace snek
         Bitmap chick2;
         Bitmap snaek;
         Bitmap grape;
+        int count = 0;
         bool warp;
-        public const int grdsize = 8;
+        public const int grdsize = 6;
         private void Snek_Load(object sender, EventArgs e)
         {
             ClientSize = new Size(grdsize*100, grdsize*100);
@@ -97,24 +98,29 @@ namespace snek
             }
             gfx.DrawImage(grape, grid.Squares[food.position.X, food.position.Y].Hitbox);
             Screen.Image = bmp;
+            count = 0;
         }
         private void Snek_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.Left && player.states != moveState.Right && count == 0)
             {
                 player.states = moveState.Left;
+                count++;
             }
-            else if (e.KeyCode == Keys.Right)
+            else if (e.KeyCode == Keys.Right && player.states != moveState.Left && count == 0)
             {
                 player.states = moveState.Right;
+                count++;
             }
-            if (e.KeyCode == Keys.Down)
+            if (e.KeyCode == Keys.Down && player.states != moveState.Down && count == 0)
             {
                 player.states = moveState.Up;
+                count++;
             }
-            else if (e.KeyCode == Keys.Up)
+            else if (e.KeyCode == Keys.Up && player.states != moveState.Up && count == 0)
             {
                 player.states = moveState.Down;
+                count++;
             }
         }
         private void Snek_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)

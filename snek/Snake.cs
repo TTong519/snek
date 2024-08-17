@@ -17,7 +17,7 @@ namespace snek
         {
             body[0] = new Point(0, 0);
             body[1] = new Point(1, 0);
-            for (int i = 2; i < Snek.grdsize; i++)
+            for (int i = 2; i < Snek.grdsize*Snek.grdsize; i++)
             {
                 body[i] = new Point(100000, 100000);
             }
