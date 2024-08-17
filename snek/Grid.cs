@@ -8,14 +8,14 @@ namespace snek
 {
     public class Grid
     {
-        public Square[,] Squares = new Square[8,8];
+        public Square[,] Squares = new Square[Snek.grdsize, Snek.grdsize];
         public Grid()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < Snek.grdsize; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < Snek.grdsize; j++)
                 {
-                    Squares[i, j] = new(Brushes.White, 2 + 100*j, 2 + 100*i);
+                    Squares[i, j] = new(Brushes.White, Snek.grdsize + 100*j, Snek.grdsize + 100*i);
                 }
             }
         }

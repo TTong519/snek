@@ -39,11 +39,10 @@
             // Screen
             // 
             Screen.BackColor = SystemColors.ActiveCaptionText;
-            Screen.Dock = DockStyle.Fill;
             Screen.ErrorImage = null;
             Screen.Location = new Point(0, 0);
             Screen.Name = "Screen";
-            Screen.Size = new Size(804, 801);
+            Screen.Size = new Size(400, 400);
             Screen.TabIndex = 0;
             Screen.TabStop = false;
             Screen.Click += Screen_Click;
@@ -57,7 +56,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(339, 242);
+            label1.Location = new Point(88, 52);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
             label1.TabIndex = 1;
@@ -67,7 +66,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(339, 257);
+            label2.Location = new Point(88, 67);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 2;
@@ -78,7 +77,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(804, 801);
+            ClientSize = new Size(524, 481);
             Controls.Add(Screen);
             Controls.Add(label1);
             Controls.Add(label2);

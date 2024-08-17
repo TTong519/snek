@@ -1,3 +1,4 @@
+using System.Diagnostics.SymbolStore;
 using System.Drawing.Drawing2D;
 
 namespace snek
@@ -18,8 +19,11 @@ namespace snek
         Bitmap snaek;
         Bitmap grape;
         bool warp;
+        public const int grdsize = 8;
         private void Snek_Load(object sender, EventArgs e)
         {
+            ClientSize = new Size(grdsize*100, grdsize*100);
+            Screen.Size = new Size(grdsize * 100, grdsize * 100);
             hen = Properties.Resources.Hen;
             chick1 = Properties.Resources.Chick;
             chick2 = Properties.Resources.swan;
@@ -35,15 +39,15 @@ namespace snek
         private void tick_Tick(object sender, EventArgs e)
         {
             gfx.Clear(BackColor);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < grdsize; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < grdsize; j++)
                 {
                     gfx.FillRectangle(Brushes.White, grid.Squares[i, j].Hitbox);
                 }
             }
             snek.Update(player.states);
-            if (((snek.body[0].X >= 8 || snek.body[0].X < 0) || (snek.body[0].Y >= 8 || snek.body[0].Y < 0)) && !warp)
+            if (((snek.body[0].X >= grdsize || snek.body[0].X < 0) || (snek.body[0].Y >= grdsize || snek.body[0].Y < 0)) && !warp)
             {
                 tick.Enabled = false;
                 label1.BringToFront();
@@ -52,18 +56,13 @@ namespace snek
                 label2.Text = "Play Again?";
                 return;
             }
-            else if(warp)
+            bool isMax = true;
+            for (int i = 1; i < Snek.grdsize * Snek.grdsize; i++)
             {
-                for(int i = 0; i < 63; i++)
+                if (snek.body[i] == new Point(100000, 100000))
                 {
-                    if(((snek.body[i].X >= 8 || snek.body[i].X < 0) || (snek.body[i].Y >= 8 || snek.body[i].Y < 0)))
-                    {
-
-                    }
+                    isMax = false;
                 }
-            }
-            for (int i = 1; i < 63; i++)
-            {
                 if (snek.body[0] == snek.body[i])
                 {
                     tick.Enabled = false;
@@ -74,8 +73,17 @@ namespace snek
                     return;
                 }
             }
+            if(isMax) 
+            {
+                tick.Enabled = false;
+                label1.BringToFront();
+                label1.Text = "win";
+                label2.BringToFront();
+                label2.Text = "Play Again?";
+                return;
+            }
             gfx.DrawImage(hen, grid.Squares[snek.body[0].X, snek.body[0].Y].Hitbox);
-            for (int i = 1; i < 63; i++)
+            for (int i = 1; i < Snek.grdsize*Snek.grdsize; i++)
             {
                 if (snek.body[i].X == 100000)
                 {
@@ -107,10 +115,6 @@ namespace snek
             else if (e.KeyCode == Keys.Up)
             {
                 player.states = moveState.Down;
-            }
-            if(e.KeyCode == Keys.W)
-            {
-                warp = !warp;
             }
         }
         private void Snek_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
